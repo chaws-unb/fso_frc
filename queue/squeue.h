@@ -1,0 +1,58 @@
+#ifndef SQUEUE_H
+#define SQUEUE_H
+
+#include "snode.h"
+#include <stdlib.h>
+
+/*
+*	Fila de strings
+*/
+typedef struct _SQueue
+{
+	/* Tamanho de nós na lista */
+	int size;
+	
+	/* Length(numero de caracteres) de cada nó */
+	int nlen;
+	
+	/* Primeiro nó */
+	SNode * head;
+	
+	/* Último nó */
+	SNode * tail;
+} SQueue;
+
+/*
+*	Inicia a lista passando como parametro o tamanho da string 
+*/
+extern SQueue * SQueue_init(int nlen);
+
+/*
+*	Adiciona uma string a lista de mensagens
+*/
+extern void SQueue_add(SQueue * list, const char * message);
+
+/*
+*	Pega o primeiro elemento da lista, mas não o remove
+*	Retorna 0 se retornou ou -1 se não removeu
+*/
+extern short int SQueue_first(SQueue * list, char ** message);
+
+/*
+*	Remove o primeiro elemento da lista
+*	Retorna o número de elementos removidos (0 ou 1)
+*/
+extern short int SQueue_remove(SQueue * list);
+
+/*
+*	Verifica se a lista está vazia ou nula
+*	Retorna 0 se vazia ou nula, 1 caso contrário
+*/
+extern short int SQueue_empty(SQueue * list);
+
+/*
+*	Imprime a lista
+*/
+extern void SQueue_print(SQueue * list);
+
+#endif

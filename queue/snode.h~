@@ -1,0 +1,9 @@
+#ifndef SNODE_H
+#define SNODE_H
+
+typedef struct _SNode{
+	char * value;
+	struct _SNode * next;
+} SNode;
+
+#endif
