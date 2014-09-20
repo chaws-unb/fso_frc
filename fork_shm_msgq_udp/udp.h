@@ -15,7 +15,8 @@
 #define IP "127.0.0.1" 	/* Server IP */
 #define PORT "9001"		/* Server PORT */
 
-int sendUDP(const char * msg);
-int receiveUDP(char * msg, int * length);
+void init_udp();
+int sendudp(const char * msg, int length);
+int recvudp(char * msg, int * length);
 
 #endif

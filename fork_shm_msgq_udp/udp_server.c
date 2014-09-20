@@ -3,7 +3,10 @@
 static int sd;							/* Socket Descriptor */
 static struct sockaddr_in server_addr; 	/* Server address */
 
-static void init_udp_server()
+/**
+ *	Set up a udp server
+ */
+void init_udp()
 {
 	/* Trying to create a Datagram Socket*/
 	sd = socket(AF_INET, SOCK_DGRAM, 0);
@@ -28,7 +31,7 @@ static void init_udp_server()
 	}
 }
 
-int receiveUDP(char * msg, int * length)
+int recvudp(char * msg, int * length)
 {
 	/* Just a smart control for intialization */
 	static char init = 0;
@@ -47,7 +50,7 @@ int receiveUDP(char * msg, int * length)
 // {
 // 	char buffer[MAX_MSG];
 // 	int length;
-// 	receiveUDP(buffer, &length);
+// 	recvudp(buffer, &length);
 // 	printf("Received message is '%s', %i bytes\n", buffer, length);
 // 	return 0;
 // }

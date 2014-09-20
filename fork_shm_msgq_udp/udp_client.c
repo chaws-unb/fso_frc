@@ -5,9 +5,9 @@ static struct sockaddr_in client_addr;  /* Client address */
 static struct sockaddr_in server_addr; 	/* Server address */
 
 /**
- *	Set up a udp client sender
+ *	Set up a udp client
  */
-static void init_udp_client()
+void init_udp()
 {
 	/* Fill Server information */
 	server_addr.sin_family 	  	= AF_INET;
@@ -40,7 +40,7 @@ static void init_udp_client()
 /**
  *	Send a UDP package
  */
-int sendUDP(const char * msg)
+int sendudp(const char * msg, int length)
 {
 	/* Just a smart control for intialization */
 	static char init = 0;
@@ -59,6 +59,6 @@ int sendUDP(const char * msg)
 
 // int main(int argc, char *argv[])
 // {
-// 	sendUDP("lalala");
+// 	sendudp("lalala", sizeof("lalala"));
 // 	return 0;
 // }
