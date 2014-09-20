@@ -98,10 +98,10 @@ static void * child(void * params)
         }
         
         /* Check if it's time to quit */
-		if(!strncmp(QUIT_MSG, msg.mtext, strlen(QUIT_MSG)))
-		{
-			break;
-		}
+		// if(!strncmp(QUIT_MSG, msg.mtext, strlen(QUIT_MSG)))
+		// {
+		// 	break;
+		// }
     }
 }
 
