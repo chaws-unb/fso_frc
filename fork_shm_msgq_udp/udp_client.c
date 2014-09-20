@@ -24,6 +24,7 @@ void init_udp()
 	if(sd < 0) 
 	{
 		printf("Can't open datagram socket \n");
+		perror("Reason");
 		exit(1); 
 	}
 
@@ -33,6 +34,7 @@ void init_udp()
 	if(rc < 0) 
 	{
 		printf("Can't use port %s, is it in use?\n", PORT);
+		perror("Reason");
 		exit(1); 
 	}
 }
@@ -40,12 +42,8 @@ void init_udp()
 /**
  *	Send a UDP package
  */
-int sendudp(const char * msg, int length)
+int send_udp(const char * msg, int length)
 {
-	/* Just a smart control for intialization */
-	static char init = 0;
-	if(!init) init_udp_client(), init = 1;
-
 	/* Return Control */ 
 	int rc; 
 	rc = sendto(sd, msg, strlen(msg), 0, (struct sockaddr *)&server_addr, sizeof(server_addr));
@@ -59,6 +57,6 @@ int sendudp(const char * msg, int length)
 
 // int main(int argc, char *argv[])
 // {
-// 	sendudp("lalala", sizeof("lalala"));
+// 	send_udp("lalala", sizeof("lalala"));
 // 	return 0;
 // }

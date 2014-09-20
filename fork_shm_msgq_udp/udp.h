@@ -11,12 +11,12 @@
 #include <unistd.h>
 #include <string.h>
 
-#define MAX_MSG 100 	/* Max message length */
+#define UDP_MAX_MSG 100 /* Max message length */
 #define IP "127.0.0.1" 	/* Server IP */
-#define PORT "9001"		/* Server PORT */
+#define PORT "9002"		/* Server PORT */
 
 void init_udp();
-int sendudp(const char * msg, int length);
-int recvudp(char * msg, int * length);
+int send_udp(const char * msg, int length);
+int recv_udp(char * msg, int * length);
 
 #endif

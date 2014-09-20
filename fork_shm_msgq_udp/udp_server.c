@@ -9,10 +9,15 @@ static struct sockaddr_in server_addr; 	/* Server address */
 void init_udp()
 {
 	/* Trying to create a Datagram Socket*/
+	#ifdef PRINT_DEBUG
+		printf("initiating udp \n");
+	#endif
+		
 	sd = socket(AF_INET, SOCK_DGRAM, 0);
 	if(sd < 0) 
 	{
 		printf("Can't open datagram socket \n");
+		perror("Reason");
 		exit(1);  
 	}
 
@@ -27,30 +32,28 @@ void init_udp()
 	if(rc < 0) 
 	{
 		printf("Can't use port %s, is it in use?\n", PORT);
+		perror("Reason");
 		exit(1); 
 	}
 }
 
-int recvudp(char * msg, int * length)
+int recv_udp(char * msg, int * length)
 {
-	/* Just a smart control for intialization */
-	static char init = 0;
-	if(!init) init_udp_server(), init = 1;
-
 	/* Wait until next package arrives */
-	*length = recvfrom(sd, msg, MAX_MSG, 0, NULL, NULL);
+	*length = recvfrom(sd, msg, UDP_MAX_MSG, 0, NULL, NULL);
 	if(*length < 0) 
 	{
 		printf("Something wrong happened and can't receive any data\n");
+		perror("Reason");
 		exit(1);
 	}
 }
 
 // int main(int argc, char *argv[]) 
 // {
-// 	char buffer[MAX_MSG];
+// 	char buffer[UDP_MAX_MSG];
 // 	int length;
-// 	recvudp(buffer, &length);
+// 	recv_udp(buffer, &length);
 // 	printf("Received message is '%s', %i bytes\n", buffer, length);
 // 	return 0;
 // }

@@ -16,10 +16,10 @@ int main()
 	while(1) 
     {
     	printf("Waiting...");
-        recvmsg(buffer, &chars_read);
+        recv_msg(buffer, &chars_read);
 
         /* Check if it's time to quit */
-        if(strncmp(buffer, QUIT_MSG, strlen(QUIT_MSG)))
+        if(!strncmp(buffer, QUIT_MSG, strlen(QUIT_MSG)))
         {
         	printf("Quitting...");
         	break;
@@ -28,6 +28,7 @@ int main()
         buffer[chars_read] = '\0';
         printf("received: '%s'\n", buffer);
     }
+    destroy_msg();
     printf("quit!\n");
 	return 0;
 }

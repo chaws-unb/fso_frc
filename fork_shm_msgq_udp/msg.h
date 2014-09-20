@@ -6,13 +6,14 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
+#include <pthread.h>
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/msg.h>
-#include <sys/ipc.h>
+#include <udp.h>
 
-#define MSG_SIZE 128
-#define QUIT_MSG "quit"
+#define MSG_SIZE UDP_MAX_MSG
+#define QUIT_MSG "!!!quit!!!"
 
 /**
  *	Message struct to be passed through message queue
@@ -25,7 +26,7 @@ typedef struct _message
 
 void init_msg();
 void destroy_msg();
-int sendmsg(const char * msg, int length);
-int recvmsg(char * msg, int * length);
+int send_msg(const char * msg, int length);
+int recv_msg(char * msg, int * length);
 
 #endif
