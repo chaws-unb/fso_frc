@@ -3,7 +3,7 @@
 #include <string.h>
 #include <msg.h>
 
-#define BUFFER_SIZE
+#define BUFFER_SIZE 256
 
 int main()
 {
