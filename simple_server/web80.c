@@ -51,9 +51,9 @@ int main(int argc,char **argv) {
           "<BODY>\n"
           "<H1>Servidor WWW no ar !!!</H1>\n",tx);
           */
-    fputs("lelelele", tx);
+    //fputs("lelelele", tx);
     time(&td);
-    fprintf(tx,"<H2>PID desse Web Server: %ld <H2>",(long)getpid());
+    fprintf(tx,"<HTML><BODY><H2 style=\"font-color: #FACADA; border: 1px solid #999;\">PID desse Web Server: %ld <H2>",(long)getpid());
     fprintf(tx,"<H5>Hora da requisicao:  %s</H5>\n", ctime(&td));
     fputs("</BODY>\n" "</HTML>\n",tx);
     fclose(tx); fclose(rx);

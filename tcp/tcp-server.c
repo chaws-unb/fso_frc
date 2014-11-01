@@ -19,7 +19,7 @@ int main(int argc, char**argv)
 
    bzero(&servaddr,sizeof(servaddr));
    servaddr.sin_family = AF_INET;
-   servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
+   servaddr.sin_addr.s_addr=inet_addr("0.0.0.0");
    servaddr.sin_port=htons(32000);
    bind(listenfd,(struct sockaddr *)&servaddr,sizeof(servaddr));
 
